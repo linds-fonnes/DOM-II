@@ -46,7 +46,41 @@ window.addEventListener('scroll',() => {
     if (Math.ceil(scrolled) === scrollable){
         alert('You\'ve reached the bottom!')
         footer.style.backgroundColor = 'pink';
+        event.stopPropagation();
     }
 });
 
+//#8 CONTEXTMENU bubbles: yes
+const welcomeFunBus = document.querySelector('.intro h2');
+
+welcomeFunBus.addEventListener('contextmenu', event => {
+    event.preventDefault();
+    event.target.style.backgroundColor = 'yellow';
+    event.target.style.fontSize = '5rem';
+})
+
+//#9 KEYDOWN bubbles: yes
+const pics = document.querySelectorAll('img');
+document.addEventListener("keydown", event => {
+    if (event.code === 'Enter'){
+        pics[1].style.width = '3rem';
+
+    }
+});
+
+//#10 KEYUP bubbles: yes
+document.addEventListener("keyup", event => {
+    if (event.code === 'Enter'){
+        pics[1].style.width = '400px';
+    }
+});
+
+//STOP THE NAVGIATION ITEMS FROM REFRESHING THE PAGE BY USING PREVENTDEFAULT()
+Array.from(document.links).forEach(function(link){
+    link.addEventListener('click', function (event){
+        event.preventDefault();
+    })
+})
+
+//
         
